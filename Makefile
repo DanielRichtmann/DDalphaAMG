@@ -1,10 +1,29 @@
-# --- COMPILER ----------------------------------------
-CC = mpiicc 
+# --- COMPILERS ---------------------------------------
+CC_gcc   = mpicc
+CC_clang = mpicc
+CC_intel = mpiicc
 
-# --- CFLAGS -----------------------------------------
-CFLAGS_gnu = -std=gnu99 -Wall -pedantic -O3 -ffast-math -msse4.2 -fopenmp 
-CFLAGS_intel = -std=gnu99 -Wall -pedantic -O3  -xHOST -qopenmp 
-CFLAGS = $(CFLAGS_intel)
+# --- CFLAGS ------------------------------------------
+CFLAGS_gcc   = -std=gnu99 -Wall -pedantic -O3 -ffast-math -msse4.2 -fopenmp
+CFLAGS_clang = -std=gnu99 -Wall -pedantic -O3 -ffast-math -msse4.2 -fopenmp
+CFLAGS_intel = -std=gnu99 -Wall -pedantic -O3             -xHOST   -qopenmp
+
+# --- SWITCH COMPILER VENDOR --------------------------
+ifndef VENDOR
+$(error VENDOR is not set. Please call make like this: VENDOR={intel,gcc,clang} make ...)
+endif
+
+CC     = $(CC_$(VENDOR))
+CFLAGS = $(CFLAGS_$(VENDOR))
+
+ifeq ($(CC),)
+$(error Vendor $(VENDOR) not supported. Please choose one of these: {intel,gcc,clang})
+endif
+
+ifneq ($(VENDOR),intel)
+export OMPI_CC  = $(VENDOR)
+export MPICH_CC = $(VENDOR)
+endif
 
 # --- DO NOT CHANGE -----------------------------------
 CPP = cpp
