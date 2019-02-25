@@ -26,10 +26,10 @@
   // choose basis:
   // BASIS0: Basis used within the OPENQCD/DD-HMC code
   // BASIS1: Basis used for BMW-c lattices
-  // BASIS2: Basis used for QCDSF lattices
+  // BASIS2: Basis used for QCDSF lattices and within Grid
   // BASIS3: Basis used in the QOPQDP Code
   // BASIS4: Basis used in the tmLQCD Code
-  #define BASIS4 // change here
+  #define BASIS2 // change here
   
   enum { T, Z, Y, X };
   
@@ -285,8 +285,8 @@
   /* ------------------------------------------------- */
     #else
       #ifdef BASIS2
-        // Bais used for QCDSF lattices
-        #define CLIFFORD_BASIS "BASIS2:QCDSF BASIS"
+        // Bais used for QCDSF lattices and within Grid
+        #define CLIFFORD_BASIS "BASIS2:QCDSF BASIS and within Grid"
         /* gamma_T =
         *  0  0  1  0
         *  0  0  0  1
