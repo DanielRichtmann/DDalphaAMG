@@ -225,6 +225,10 @@ void DDalphaAMG_update_parameters( DDalphaAMG_parameters *mg_params, DDalphaAMG_
           else
             l_tmp->p_float.tol = g.kcycle_tol;
         }
+        if( g.kcycle_tol == 0.0 ) {
+          g.kcycle = 0;
+          printf0("Disabling k-cycle\n");
+        }
       }
     } else {
       // double coarse_tolerance;

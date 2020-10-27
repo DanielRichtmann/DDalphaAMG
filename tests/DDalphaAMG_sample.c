@@ -95,7 +95,7 @@ void help( char * arg0 ) {
     printf0("   -u #         mu for the configuration\n");
     printf0("   -t #         Number of OpenMp threads\n");
     printf0("   -r #         Relative residual\n");
-    printf0("   -K #         K-cycle tolerance\n");
+    printf0("   -K #         K-cycle tolerance (0 switches to V-cycle)\n");
     printf0("   -C #         Tolerance on coarsest grid\n");
     printf0("   -l #         Number of levels, l (from 1 to 4)\n");
     printf0("   -V 1 [2] [3] Basis vectors between each level (l-1)\n");
