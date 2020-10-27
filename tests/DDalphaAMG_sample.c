@@ -51,7 +51,7 @@ void standard_init() {
   init.global_lattice[X] = 8;
 
   init.kappa = 0.142857143;
-  init.mu = 0.1;
+  init.mu = 0.0;
   init.csw = 1;
 
   init.bc = 1;
